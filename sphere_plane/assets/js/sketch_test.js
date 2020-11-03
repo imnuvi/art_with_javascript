@@ -34,7 +34,7 @@ function draw(){
   let dirx = (mouseX / width - 0.5) * 2;
   let diry = (mouseY / height - 0.5) * 2;
 
-  directionalLight(250, 250, 250, -dirx, -diry, -0.5);
+  directionalLight(250, 250, 250, -dirx, -diry, 1);
 
   noStroke();
   // fill(10);
@@ -52,7 +52,7 @@ function draw(){
 
 
 
-  if (size>300 || size< 10){
+  if (size>max_size || size< min_size){
     grow_rate *= -1;
   }
 
