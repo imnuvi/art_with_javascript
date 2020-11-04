@@ -1,7 +1,8 @@
 var min_size = 10;
 var max_size  = 150;
-var size = 10;
 var grow_rate = 1;
+
+var plane_size = 3;
 
 
 var sphere_arr;
@@ -16,6 +17,14 @@ function create_2d_array(x_len,y_len){
 }
 
 
+function fill_sphere_plane(arr){
+  for (let i=0; i<arr.length; i++){
+    for (let j=0; j<arr[0].length; i++){
+      arr[i][j] = new sphereMover(i*max_size*2,j*max_size*2);
+    }
+  }
+}
+
 
 function setup(){
   ww = windowWidth;
@@ -24,7 +33,7 @@ function setup(){
   canvas.position(0,0);
   canvas.style('z-index', '-1');
 
-  sphere_arr = create_2d_array(3,3);
+  sphere_arr = create_2d_array(plane_size,plane_size);
 
 }
 
