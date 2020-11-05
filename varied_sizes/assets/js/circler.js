@@ -1,8 +1,8 @@
-function circleMover(x,y){
+function circleMover(x,y,cursize,inval){
   this.xpos = x;
   this.ypos = y;
-  this.size = min_size;
-  this.grow_rate = grow_rate;
+  this.size = cursize;
+  this.grow_rate = inval;
 }
 
 circleMover.prototype.show = function(){

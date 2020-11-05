@@ -1,9 +1,10 @@
 var min_size = 10;
-var max_size  = 150;
+var max_size  = 50;
 var size = 10;
 var grow_rate = 1;
+var generation_diff = 10;
 
-var arr_length = 20;
+var arr_length = 30;
 
 var dot_arr;
 
@@ -19,7 +20,9 @@ function create_2d_array(x_len,y_len){
 function fill_circle_arr(arr){
   for (let i=0; i<arr.length; i++){
     for (let j=0; j<arr[0].length; j++){
-      arr[i][j] = new circleMover(i*max_size,j*max_size);
+      cursize = (i*generation_diff > max_size) ? (max_size - (i*generation_diff)%max_size) : i*generation_diff;
+      inval = (i*generation_diff > max_size && Math.floor(i*generation_diff/max_size)%2 == 0) ? (-1) : (1);
+      arr[i][j] = new circleMover(i*max_size,j*max_size,cursize,inval);
     }
   }
   return arr;
