@@ -3,11 +3,11 @@ var max_size  = 100;
 var size = 10;
 var grow_rate = 1;
 
-var max_limit = 150;
-var min_limit = 20;
+var max_limit = 100;
+var min_limit = 10;
 // var generation_diff = 2;
 
-var arr_length = 10;
+var arr_length = 20;
 
 var generation_diff = (max_size-min_size)/arr_length;
 var white_arr;
@@ -26,7 +26,7 @@ function fill_circle_arr(arr,col,in_size,inv){
   for (let i=0; i<arr.length; i++){
     for (let j=0; j<arr[0].length; j++){
       // genval = i*generation_diff;
-      genval = (inv) ? map(arr.length - i,0,arr.length,min_size,max_size) : map(i,0,arr.length,min_size,max_size);
+      genval = (inv) ? map(arr.length - i -1,0,arr.length,min_size,max_size) : map(i,0,arr.length,min_size,max_size);
       // cursize = (genval  > max_size) ? (max_size - (genval )%max_size) : genval ;
 
       cursize = (genval %(max_size*2) > max_size ) ? (max_size*2 - genval %(max_size*2)) : (genval %(max_size*2));
@@ -34,7 +34,7 @@ function fill_circle_arr(arr,col,in_size,inv){
 
       // inval = (genval  > max_size) ? (-1) : (1);
       inval = (genval  > max_size && Math.floor(genval /max_size)%2 == 0) ? (-1*grow_rate) : (1*grow_rate);
-      arr[i][j] = new circleMover(in_size + (i)*max_size,in_size + (j)*max_size,cursize,inval,col);
+      arr[i][j] = new rectMover(in_size + (i)*max_size,in_size + (j)*max_size,cursize,inval,col);
     }
   }
   return arr;
@@ -53,6 +53,9 @@ function setup(){
   black_arr = create_2d_array(arr_length,arr_length);
   black_arr = fill_circle_arr(black_arr,'black',max_size*0.5,1);
 
+  angleMode(DEGREES);
+
+
 }
 
 function draw(){
@@ -68,14 +71,14 @@ function draw(){
       white_arr[i][j].show();
     }
   }
-
-
-  for (let i=0; i<white_arr.length; i++){
-    for (let j=0; j<white_arr[0].length; j++){
-      black_arr[i][j].increaser();
-      black_arr[i][j].show();
-    }
-  }
+  //
+  //
+  // for (let i=0; i<white_arr.length; i++){
+  //   for (let j=0; j<white_arr[0].length; j++){
+  //     black_arr[i][j].increaser();
+  //     black_arr[i][j].show();
+  //   }
+  // }
 
 
 
