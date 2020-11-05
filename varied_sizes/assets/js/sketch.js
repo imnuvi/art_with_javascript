@@ -1,11 +1,12 @@
 var min_size = 10;
-var max_size  = 50;
+var max_size  = 100;
 var size = 10;
 var grow_rate = 1;
-var generation_diff = 2;
+// var generation_diff = 2;
 
 var arr_length = 30;
 
+var generation_diff = (max_size-min_size)/arr_length;
 var dot_arr;
 
 
@@ -20,7 +21,8 @@ function create_2d_array(x_len,y_len){
 function fill_circle_arr(arr){
   for (let i=0; i<arr.length; i++){
     for (let j=0; j<arr[0].length; j++){
-      genval = i*generation_diff;
+      // genval = i*generation_diff;
+      genval = map(i,0,arr.length,min_size,max_size);
       // cursize = (genval  > max_size) ? (max_size - (genval )%max_size) : genval ;
 
       cursize = (genval %(max_size*2) > max_size ) ? (max_size*2 - genval %(max_size*2)) : (genval %(max_size*2));
