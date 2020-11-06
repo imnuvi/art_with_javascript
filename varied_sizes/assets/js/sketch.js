@@ -1,11 +1,13 @@
+var the_shape = "circle";
+
 
 var space_dist = 110;
-var max_limit = 50;
+var max_limit = 100;
 var min_limit = 10;
 // var generation_diff = 2;
 
-var arr_length = 11;
-var grow_rate = (max_limit-min_limit)/arr_length/6;
+var arr_length = 7;
+var grow_rate = -(max_limit-min_limit)/arr_length/6;
 
 // var generation_diff = (max_size-min_size)/arr_length;
 var white_arr;
@@ -40,7 +42,13 @@ function fill_circle_arr(arr,col,in_size,inv){
       // inval = (genval  > max_size) ? (-1) : (1);
       // inval = (genval  > max_size && Math.floor(genval /max_size)%2 == 0) ? (-1*grow_rate) : (1*grow_rate);
       inval = grow_rate;
-      arr[i][j] = new rectMover(in_size + (i)*space_dist,in_size + (j)*space_dist,genval,inval,col);
+
+      if (the_shape=="rectangle"){
+        arr[i][j] = new rectMover(in_size + (i)*space_dist,in_size + (j)*space_dist,genval,inval,col);
+      }
+      else if (the_shape=="circle"){
+        arr[i][j] = new circleMover(in_size + (i)*space_dist,in_size + (j)*space_dist,genval,inval,col);
+      }
     }
   }
   return arr;
