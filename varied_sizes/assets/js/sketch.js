@@ -1,10 +1,6 @@
-var min_size = 10;
-var max_size  = 100;
-var size = 10;
 
-
-var space_dist = 150;
-var max_limit = 100;
+var space_dist = 110;
+var max_limit = 50;
 var min_limit = 10;
 // var generation_diff = 2;
 
@@ -34,7 +30,7 @@ function fill_circle_arr(arr,col,in_size,inv){
 
       // genval = (inv) ? map(arr.length*2 - i*j -1,0,arr.length,min_limit,max_limit,true) : map(j*i,0,arr.length,min_limit,max_limit,true);
       cur_dis = dist(loc_mid.x,loc_mid.y,i,j);
-      genval = map(cur_dis,0.0,corner_dist/2,min_limit,max_limit);
+      genval = map(cur_dis,0.0,corner_dist,min_limit,max_limit);
 
       // cursize = (genval  > max_size) ? (max_size - (genval )%max_size) : genval ;
 
@@ -61,10 +57,10 @@ function setup(){
   canvas.style('z-index', '-1');
 
   white_arr = create_2d_array(arr_length,arr_length);
-  white_arr = fill_circle_arr(white_arr,'white',max_size*1,0);
+  white_arr = fill_circle_arr(white_arr,'white',max_limit*1,0);
 
   black_arr = create_2d_array(arr_length,arr_length);
-  black_arr = fill_circle_arr(black_arr,'black',max_size*0.5,1);
+  black_arr = fill_circle_arr(black_arr,'black',max_limit*0.5,1);
 
   angleMode(DEGREES);
 
