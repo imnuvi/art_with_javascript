@@ -9,7 +9,7 @@ var min_limit = 10;
 // var generation_diff = 2;
 
 var arr_length = 11;
-var grow_rate = (max_limit-min_limit)/arr_length/2;
+var grow_rate = (max_limit-min_limit)/arr_length/6;
 
 // var generation_diff = (max_size-min_size)/arr_length;
 var white_arr;
@@ -34,7 +34,7 @@ function fill_circle_arr(arr,col,in_size,inv){
 
       // genval = (inv) ? map(arr.length*2 - i*j -1,0,arr.length,min_limit,max_limit,true) : map(j*i,0,arr.length,min_limit,max_limit,true);
       cur_dis = dist(loc_mid.x,loc_mid.y,i,j);
-      genval = map(cur_dis,0.0,corner_dist,min_limit,max_limit,true);
+      genval = map(cur_dis,0.0,corner_dist/2,min_limit,max_limit);
 
       // cursize = (genval  > max_size) ? (max_size - (genval )%max_size) : genval ;
 
@@ -80,7 +80,7 @@ function draw(){
 
   for (let i=0; i<white_arr.length; i++){
     for (let j=0; j<white_arr[0].length; j++){
-      // white_arr[i][j].increaser();
+      white_arr[i][j].increaser();
       white_arr[i][j].show();
     }
   }
