@@ -1,15 +1,17 @@
 var min_size = 10;
 var max_size  = 100;
 var size = 10;
-var grow_rate = 1;
 
+
+var space_dist = 150;
 var max_limit = 100;
 var min_limit = 10;
 // var generation_diff = 2;
 
 var arr_length = 20;
+var grow_rate = (max_limit-min_limit)/arr_length/2;
 
-var generation_diff = (max_size-min_size)/arr_length;
+// var generation_diff = (max_size-min_size)/arr_length;
 var white_arr;
 var black_arr;
 
@@ -26,15 +28,17 @@ function fill_circle_arr(arr,col,in_size,inv){
   for (let i=0; i<arr.length; i++){
     for (let j=0; j<arr[0].length; j++){
       // genval = i*generation_diff;
-      genval = (inv) ? map(arr.length - i -1,0,arr.length,min_size,max_size) : map(i,0,arr.length,min_size,max_size);
+      console.log(i);
+      genval = (inv) ? map(arr.length - i -1,0,arr.length,min_limit,max_limit,true) : map(i,0,arr.length,min_limit,max_limit,true);
       // cursize = (genval  > max_size) ? (max_size - (genval )%max_size) : genval ;
 
-      cursize = (genval %(max_size*2) > max_size ) ? (max_size*2 - genval %(max_size*2)) : (genval %(max_size*2));
+      // cursize = (genval %(max_size*2) > max_size ) ? (max_size*2 - genval %(max_size*2)) : (genval %(max_size*2));
 
 
       // inval = (genval  > max_size) ? (-1) : (1);
-      inval = (genval  > max_size && Math.floor(genval /max_size)%2 == 0) ? (-1*grow_rate) : (1*grow_rate);
-      arr[i][j] = new rectMover(in_size + (i)*max_size,in_size + (j)*max_size,cursize,inval,col);
+      // inval = (genval  > max_size && Math.floor(genval /max_size)%2 == 0) ? (-1*grow_rate) : (1*grow_rate);
+      inval = grow_rate;
+      arr[i][j] = new rectMover(in_size + (i)*space_dist,in_size + (j)*space_dist,genval,inval,col);
     }
   }
   return arr;
@@ -43,6 +47,9 @@ function fill_circle_arr(arr,col,in_size,inv){
 function setup(){
   ww = windowWidth;
   wh = windowHeight;
+
+  frameRate(30);
+
   canvas = createCanvas(ww,wh);
   canvas.position(0,0);
   canvas.style('z-index', '-1');
