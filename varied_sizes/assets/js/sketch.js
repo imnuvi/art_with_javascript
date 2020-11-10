@@ -7,7 +7,7 @@ var min_limit = 10;
 // var generation_diff = 2;
 
 var arr_length = 7;
-var grow_rate = -(max_limit-min_limit)/arr_length/6;
+var grow_rate = -(max_limit-min_limit)/arr_length/6 ;
 
 // var generation_diff = (max_size-min_size)/arr_length;
 var white_arr;
