@@ -11,7 +11,7 @@ circleMover.prototype.show = function(){
   translate(this.xpos,this.ypos);
   noStroke();
   fill(this.col);
-  circle(0,0,this.size);
+  sphere(0,0,this.size);
   pop();
 }
 
