@@ -1,11 +1,14 @@
 
 
 function setup(){
-  canvas = createCanvas(500,500);
-  img = loadImage("./images/bg.png")
+	ww = windowWidth;
+	wh = windowHeight;
+  canvas = createCanvas(ww,wh);
+  canvas.style('z-index','-1');
+  canvas.position(0,0);
 }
 
 function draw(){
+	background(0);
   circle(mouseX,mouseY,100);
-  image(img,0,0);
 }
