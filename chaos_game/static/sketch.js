@@ -20,7 +20,7 @@ function point_generator(n){
     xx = random(ww);
     yy = random(wh);
     point_arr.push(xx,yy);
-    vertex(random(ww),random(wh));
+    vertex(xx,yy);
   }
   endShape(CLOSE);
   return point_arr;
@@ -53,7 +53,7 @@ function draw(){
   val = Math.floor(random(n));
   console.log(val);
   curx = lerp(curx,point_array[val*2],0.5);
-  cury = lerp(curx,point_array[val*2 + 1],0.5);
+  cury = lerp(cury,point_array[val*2 + 1],0.5);
 
   point(curx,cury);
   // triangle(ax,ay,bx,by,cx,cy);
