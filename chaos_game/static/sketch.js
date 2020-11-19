@@ -39,10 +39,19 @@ function init(){
 function setup(){
   init()
 
+  stroke(255);
+  strokeWeight(5);
   point_array = point_generator(n);
+  curx = random(ww);                        // current random value for x, keeps changing
+  cury = random(wh);
 }
 
 function draw(){
+  val = random(Math.round(random(n)));
+  for (let i=0; i<n; i++){
+
+  }
+  point()
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
 
