@@ -36,19 +36,6 @@ function init(){
 
 function setup(){
   init()
-  // ax = ww/2-ww/4;             //static values for perfect triangle
-  // ay = wh/2+wh/4;
-  // bx = ww/2+ww/4;
-  // by = wh/2+wh/4;
-  // cx = ww/2;
-  // cy = wh/2-wh/4;
-
-  // ax = random(ww);
-  // ay = random(wh);
-  // bx = random(ww);
-  // by = random(wh);
-  // cx = random(ww);
-  // cy = random(wh);
 
   point_generator(n);
 }
