@@ -31,6 +31,6 @@ function setup(){
 }
 
 function draw(){
-  // triangle(ww/2-ww/4,wh/2+wh/4,ww/2+ww/4,wh/2+wh/4,ww/2,wh/2-wh/4);
+  triangle(ww/2-ww/4,wh/2+wh/4,ww/2+ww/4,wh/2+wh/4,ww/2,wh/2-wh/4);
   circle(mouseX,mouseY,100);
 }
