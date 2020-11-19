@@ -1,6 +1,7 @@
 var ax, ay;
 var bx, by;
 var cx, cy;
+var n = 3;
 
 
 function random_color(){
@@ -12,12 +13,15 @@ function reportsize(){
 	resizeCanvas(windowWidth,windowHeight);
 }
 
+function point_generator(n){
+  // n is the number of points required
 
-// function reportsize(){
-// 	resizeCanvas(windowWidth,windowHeight);
-// 	init();
-// }
-
+  beginShape();
+  for(let i=0; i<n; i++){
+    vertex(random(ww),random(wh));
+  }
+  endShape(CLOSE);
+}
 
 window.addEventListener('resize', reportsize);
 
@@ -39,15 +43,18 @@ function setup(){
   // cx = ww/2;
   // cy = wh/2-wh/4;
 
-  ax = random(ww);
-  ay = random(wh);
-  bx = random(ww);
-  by = random(wh);
-  cx = random(ww);
-  cy = random(wh);
+  // ax = random(ww);
+  // ay = random(wh);
+  // bx = random(ww);
+  // by = random(wh);
+  // cx = random(ww);
+  // cy = random(wh);
+
+  point_generator(n);
 }
 
 function draw(){
-  triangle(ax,ay,bx,by,cx,cy);
+  // triangle(ax,ay,bx,by,cx,cy);
   circle(mouseX,mouseY,100);
+
 }
