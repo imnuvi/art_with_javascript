@@ -1,3 +1,7 @@
+var ax, ay;
+var bx, by;
+var cx, cy;
+
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
@@ -28,9 +32,15 @@ function init(){
 
 function setup(){
   init()
+  ax = ww/2-ww/4;
+  ay = wh/2+wh/4;
+  bx = ww/2+ww/4;
+  by = wh/2+wh/4;
+  cx = ww/2;
+  cy = wh/2-wh/4;
 }
 
 function draw(){
-  triangle(ww/2-ww/4,wh/2+wh/4,ww/2+ww/4,wh/2+wh/4,ww/2,wh/2-wh/4);
+  triangle(ax,ay,bx,by,cx,cy);
   circle(mouseX,mouseY,100);
 }
