@@ -1,6 +1,4 @@
-var ax, ay;
-var bx, by;
-var cx, cy;
+var point_array;
 var n = 3;
 
 
@@ -15,12 +13,16 @@ function reportsize(){
 
 function point_generator(n){
   // n is the number of points required
-
+  point_arr = [];
   beginShape();
   for(let i=0; i<n; i++){
+    xx = random(ww);
+    yy = random(wh);
+    point_arr.push(xx,yy);
     vertex(random(ww),random(wh));
   }
   endShape(CLOSE);
+  return point_arr;
 }
 
 window.addEventListener('resize', reportsize);
@@ -37,11 +39,11 @@ function init(){
 function setup(){
   init()
 
-  point_generator(n);
+  point_array = point_generator(n);
 }
 
 function draw(){
   // triangle(ax,ay,bx,by,cx,cy);
-  circle(mouseX,mouseY,100);
+  // circle(mouseX,mouseY,100);
 
 }
