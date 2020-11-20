@@ -11,6 +11,13 @@ function reportsize(){
 	resizeCanvas(windowWidth,windowHeight);
 }
 
+function array_colors(n){
+  col_arr = [];
+  for(let i=0; i<n; i++){
+    col_arr.push(color(random(255),random(255),random(255)));
+  }
+}
+
 function point_generator(n){
   // n is the number of points required
   point_arr = [];
@@ -41,7 +48,7 @@ function setup(){
   init()
 
   stroke(255);
-  strokeWeight(5);
+  strokeWeight(1);
   background(0);
   point_array = point_generator(n);
   curx = random(ww);                        // current random value for x, keeps changing
@@ -50,12 +57,15 @@ function setup(){
 
 function draw(){
 
-  val = Math.floor(random(n));
-  console.log(val);
-  curx = lerp(curx,point_array[val*2],0.5);
-  cury = lerp(cury,point_array[val*2 + 1],0.5);
+  for(let i=0; i<100; i++){
+    val = Math.floor(random(n));
+    console.log(val);
+    stroke()
+    curx = lerp(curx,point_array[val*2],0.5);
+    cury = lerp(cury,point_array[val*2 + 1],0.5);
 
-  point(curx,cury);
+    point(curx,cury);
+  }
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
 
