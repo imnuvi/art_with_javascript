@@ -26,10 +26,8 @@ function point_generator(n){
   noFill();
   beginShape();
   for(let i=0; i<n; i++){
-    xx = random(ww);
-    yy = random(wh);
-    point_arr.push(xx,yy);
-    vertex(xx,yy);
+    corner = p5.createVector(random(ww),random(wh));
+    vertex(corner.x,corner.y);
   }
   endShape(CLOSE);
   return point_arr;
@@ -54,8 +52,7 @@ function setup(){
   background(0);
   point_array = point_generator(n);
   color_array = color_generator(n);
-  curx = random(ww);                        // current random value for x, keeps changing
-  cury = random(wh);
+  curpos = p5.createVector(random(ww),random(wh));                        // current random value for x, keeps changing
 }
 
 function draw(){
@@ -64,8 +61,8 @@ function draw(){
     val = Math.floor(random(n));
     console.log(val);
     stroke(color_array[val])
-    curx = lerp(curx,point_array[val*2],0.5);
-    cury = lerp(cury,point_array[val*2 + 1],0.5);
+    curpos.x = lerp(curpos.x,point_array[val].x,0.5);
+    curpos.y = lerp(curpos.y,point_array[val].y,0.5);
 
     point(curx,cury);
   }
