@@ -26,7 +26,11 @@ function point_generator(n){
   noFill();
   beginShape();
   for(let i=0; i<n; i++){
-    corner = p5.createVector(random(ww),random(wh));
+    ang = i * Math.PI*2 /n;
+    corner = p5.Vector.fromAngle(ang);
+    point_arr.push(corner);
+    corner.mult(ww/2);
+    corner.add(ww/2,wh/2);
     vertex(corner.x,corner.y);
   }
   endShape(CLOSE);
