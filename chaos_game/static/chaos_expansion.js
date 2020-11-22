@@ -1,6 +1,7 @@
 var point_array;
 var color_array
-var n = 3;
+var n = 6;
+var rad = 300;
 
 
 function random_color(){
@@ -25,11 +26,13 @@ function point_generator(n){
   point_arr = [];
   noFill();
   beginShape();
+  rot = random(20);
   for(let i=0; i<n; i++){
-    ang = i * Math.PI*2 /n;
+    console.log(rot);
+    ang = i * (Math.PI*2 /n) + (Math.PI/rot) ;
     corner = p5.Vector.fromAngle(ang);
     point_arr.push(corner);
-    corner.mult(ww/2);
+    corner.mult(rad);
     corner.add(ww/2,wh/2);
     vertex(corner.x,corner.y);
   }
@@ -56,19 +59,18 @@ function setup(){
   background(0);
   point_array = point_generator(n);
   color_array = color_generator(n);
-  curpos = p5.createVector(random(ww),random(wh));                        // current random value for x, keeps changing
+  curpos = createVector(random(ww),random(wh));                        // current random value for x, keeps changing
 }
 
 function draw(){
 
   for(let i=0; i<100; i++){
     val = Math.floor(random(n));
-    console.log(val);
     stroke(color_array[val])
     curpos.x = lerp(curpos.x,point_array[val].x,0.5);
     curpos.y = lerp(curpos.y,point_array[val].y,0.5);
 
-    point(curx,cury);
+    point(curpos.x,curpos.y);
   }
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
