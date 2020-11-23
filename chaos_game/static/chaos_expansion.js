@@ -1,7 +1,9 @@
 var point_array;
 var color_array
-var n = 3;
-
+var n = 5;
+var rad = 300;
+var perc = 0.65;
+var preval = 0;
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
@@ -10,6 +12,16 @@ function random_color(){
 
 function reportsize(){
 	resizeCanvas(windowWidth,windowHeight);
+}
+
+//this condition gives the randomness selection criteria to create cool patterns
+function condition(preval,val){
+  if (preval==val){
+    return 0
+  }
+  else{
+    return 1
+  }
 }
 
 function color_generator(n){
@@ -25,11 +37,15 @@ function point_generator(n){
   point_arr = [];
   noFill();
   beginShape();
+  rot = random(20);
   for(let i=0; i<n; i++){
-    xx = random(ww);
-    yy = random(wh);
-    point_arr.push(xx,yy);
-    vertex(xx,yy);
+    console.log(rot);
+    ang = i * (Math.PI*2 /n) + (Math.PI/rot) ;
+    corner = p5.Vector.fromAngle(ang);
+    point_arr.push(corner);
+    corner.mult(rad);
+    corner.add(ww/2,wh/2);
+    vertex(corner.x,corner.y);
   }
   endShape(CLOSE);
   return point_arr;
@@ -54,20 +70,21 @@ function setup(){
   background(0);
   point_array = point_generator(n);
   color_array = color_generator(n);
-  curx = random(ww);                        // current random value for x, keeps changing
-  cury = random(wh);
+  curpos = createVector(random(ww),random(wh));                        // current random value for x, keeps changing
 }
 
 function draw(){
 
   for(let i=0; i<100; i++){
     val = Math.floor(random(n));
-    console.log(val);
     stroke(color_array[val])
-    curx = lerp(curx,point_array[val*2],0.5);
-    cury = lerp(cury,point_array[val*2 + 1],0.5);
+    if (condition(preval,val)){
+    curpos.x = lerp(curpos.x,point_array[val].x,perc);
+    curpos.y = lerp(curpos.y,point_array[val].y,perc);
+  }
 
-    point(curx,cury);
+    point(curpos.x,curpos.y);
+    preval = val;
   }
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
