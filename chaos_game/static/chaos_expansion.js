@@ -1,8 +1,9 @@
 var point_array;
 var color_array
-var n = 6;
+var n = 5;
 var rad = 300;
-var perc = 0.5;
+var perc = 0.65;
+var preval = 0;
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
@@ -13,8 +14,14 @@ function reportsize(){
 	resizeCanvas(windowWidth,windowHeight);
 }
 
-function condition(cond){
-
+//this condition gives the randomness selection criteria to create cool patterns
+function condition(preval,val){
+  if (preval==val){
+    return 0
+  }
+  else{
+    return 1
+  }
 }
 
 function color_generator(n){
@@ -71,10 +78,13 @@ function draw(){
   for(let i=0; i<100; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
+    if (condition(preval,val)){
     curpos.x = lerp(curpos.x,point_array[val].x,perc);
     curpos.y = lerp(curpos.y,point_array[val].y,perc);
+  }
 
     point(curpos.x,curpos.y);
+    preval = val;
   }
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
