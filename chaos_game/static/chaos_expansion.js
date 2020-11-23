@@ -13,6 +13,10 @@ function reportsize(){
 	resizeCanvas(windowWidth,windowHeight);
 }
 
+function condition(cond){
+  
+}
+
 function color_generator(n){
   col_arr = [];
   for(let i=0; i<n; i++){
