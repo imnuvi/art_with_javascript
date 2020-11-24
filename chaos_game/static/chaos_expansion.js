@@ -4,6 +4,7 @@ var n = 4;
 var rad = 300;
 var perc = 0.5;
 var preval = 0;
+var self_skipper = false;
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
@@ -15,14 +16,18 @@ function reportsize(){
 }
 
 function skipper(places,preval,val){
-  if ((Math.abs(val-preval)%(n-1))>places-1){
+  if (self_skipper && (Math.abs(val-preval)%(n-1))>places-1 || ((Math.abs(val-preval)%(n-1))==0)){
+    return false
+  }
+  else if(!(self_skipper) && (Math.abs(val-preval)%(n-1))>places-1){
     return false
   }
   else{
     return true
   }
-
 }
+
+// function chooser()
 
 //this condition gives the randomness selection criteria to create cool patterns
 function condition(preval,val){
