@@ -1,8 +1,8 @@
 var point_array;
 var color_array
-var n = 5;
+var n = 4;
 var rad = 300;
-var perc = 0.65;
+var perc = 0.5;
 var preval = 0;
 
 function random_color(){
@@ -12,6 +12,16 @@ function random_color(){
 
 function reportsize(){
 	resizeCanvas(windowWidth,windowHeight);
+}
+
+function skipper(places,preval,val){
+  if (Math.abs(val-preval)>places-1){
+    return false
+  }
+  else{
+    return true
+  }
+
 }
 
 //this condition gives the randomness selection criteria to create cool patterns
@@ -78,7 +88,7 @@ function draw(){
   for(let i=0; i<100; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
-    if (condition(preval,val)){
+    if (skipper(2,preval,val)){
     curpos.x = lerp(curpos.x,point_array[val].x,perc);
     curpos.y = lerp(curpos.y,point_array[val].y,perc);
   }
