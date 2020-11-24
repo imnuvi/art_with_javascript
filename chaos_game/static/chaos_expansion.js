@@ -16,14 +16,21 @@ function reportsize(){
 }
 
 function skipper(places,preval,val){
-  if (self_skipper && (Math.abs(val-preval)%(n-1))>places-1 || ((Math.abs(val-preval)%(n-1))==0)){
-    return false
-  }
-  else if(!(self_skipper) && (Math.abs(val-preval)%(n-1))>places-1){
-    return false
+  if (self_skipper){
+    if ((Math.abs(val-preval)%(n-1))>places-1 || ((Math.abs(val-preval)%(n-1))==0)){
+      return false
+    }
+    else{
+      return true
+    }
   }
   else{
-    return true
+    if ((Math.abs(val-preval)%(n-1))>places-1){
+      return false
+    }
+    else{
+      return true
+    }
   }
 }
 
@@ -96,9 +103,10 @@ function draw(){
     if (skipper(2,preval,val)){
     curpos.x = lerp(curpos.x,point_array[val].x,perc);
     curpos.y = lerp(curpos.y,point_array[val].y,perc);
-  }
-
     point(curpos.x,curpos.y);
+    }
+
+
     preval = val;
   }
   // triangle(ax,ay,bx,by,cx,cy);
