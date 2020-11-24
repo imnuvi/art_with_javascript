@@ -26,7 +26,7 @@ function skipper(places,preval,val){
 
 //this condition gives the randomness selection criteria to create cool patterns
 function condition(preval,val){
-  if (preval==val){
+  if ((preval+val)%n==val){
     return 0
   }
   else{
