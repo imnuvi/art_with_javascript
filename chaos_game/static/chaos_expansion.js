@@ -119,9 +119,9 @@ function draw(){
     val = Math.floor(random(n));
     stroke(color_array[val])
     if (chooser(val)){
-    curpos.x = lerp(curpos.x,point_array[val].x,perc);
-    curpos.y = lerp(curpos.y,point_array[val].y,perc);
-    point(curpos.x,curpos.y);
+      curpos.x = lerp(curpos.x,point_array[val].x,perc);
+      curpos.y = lerp(curpos.y,point_array[val].y,perc);
+      point(curpos.x,curpos.y);
     }
 
     // console.log(buffer);
