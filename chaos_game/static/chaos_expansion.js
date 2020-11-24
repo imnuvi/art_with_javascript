@@ -15,7 +15,7 @@ function reportsize(){
 }
 
 function skipper(places,preval,val){
-  if ((Math.abs(val-preval)%n)==2){
+  if ((Math.abs(val-preval)%(n-1))>places-1){
     return false
   }
   else{
