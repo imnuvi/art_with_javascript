@@ -15,7 +15,7 @@ function reportsize(){
 }
 
 function skipper(places,preval,val){
-  if (Math.abs(val-preval)>places-1){
+  if ((Math.abs(val-preval)%n)==2){
     return false
   }
   else{
@@ -26,7 +26,7 @@ function skipper(places,preval,val){
 
 //this condition gives the randomness selection criteria to create cool patterns
 function condition(preval,val){
-  if ((preval+val)%n==val){
+  if (preval==val){
     return 0
   }
   else{
