@@ -4,6 +4,7 @@ var n = 4;
 var rad = 300;
 var perc = 0.5;
 var preval = 0;
+var neighbours = 1;
 var self_skipper = false;
 var buffer = [];
 
@@ -17,7 +18,7 @@ function reportsize(){
 }
 
 function self_rep(val){
-  if (val == buffer[buffer.length-1]){
+  if (buffer[buffer.length-1]==buffer.length-2){
     return true
   }
   else{
@@ -44,8 +45,11 @@ function skipper(places,val){
 }
 
 function chooser(val){
-  if (buffer[buffer.length-1]==buffer.length-2 && (Math.abs(val-buffer[buffer.length-1])%(n-1))>places-1){
-    
+  if ((buffer[buffer.length-1]==buffer.length-2) && (Math.abs(val-buffer[buffer.length-1])%(n-1))==neighbours-1){
+    return false;
+  }
+  else{
+    return true;
   }
 
 }
@@ -114,7 +118,7 @@ function draw(){
   for(let i=0; i<100; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
-    if (skipper(2,val)){
+    if (chooser(val)){
     curpos.x = lerp(curpos.x,point_array[val].x,perc);
     curpos.y = lerp(curpos.y,point_array[val].y,perc);
     point(curpos.x,curpos.y);
