@@ -93,6 +93,15 @@ function point_generator(n){
 
 window.addEventListener('resize', reportsize);
 
+function buffer_appender(){
+  if (buffer.length > 3){
+    buffer.shift();
+    buffer.push(val);
+  }
+  else{
+    buffer.push(val);
+  }
+}
 
 function init(){
   ww = windowWidth;
@@ -115,22 +124,14 @@ function setup(){
 
 function draw(){
 
-  for(let i=0; i<100; i++){
+  for(let i=0; i<1000; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
-    if (chooser(val)){
+    if (skipper(2,val)){
       curpos.x = lerp(curpos.x,point_array[val].x,perc);
       curpos.y = lerp(curpos.y,point_array[val].y,perc);
       point(curpos.x,curpos.y);
-    }
-
-    // console.log(buffer);
-    if (buffer.length > 3){
-      buffer.shift();
-      buffer.push(val);
-    }
-    else{
-      buffer.push(val);
+      buffer_appender();
     }
   }
   // triangle(ax,ay,bx,by,cx,cy);
