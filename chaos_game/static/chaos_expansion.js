@@ -45,11 +45,11 @@ function skipper(places,val){
 }
 
 function chooser(val){
-  if ((buffer[buffer.length-1]==buffer.length-2) && (Math.abs(val-buffer[buffer.length-1])%(n-1))==neighbours-1){
+  if ((buffer[buffer.length-1]==buffer[buffer.length-2]) && (Math.abs(val-buffer[buffer.length-1])%(n-1))==1){
     return false;
   }
   else{
-    return true;
+    return true
   }
 
 }
@@ -77,7 +77,7 @@ function point_generator(n){
   point_arr = [];
   noFill();
   beginShape();
-  rot = random(20);
+  rot = (random(n));
   for(let i=0; i<n; i++){
     console.log(rot);
     ang = i * (Math.PI*2 /n) + (Math.PI/rot) ;
