@@ -16,6 +16,14 @@ function reportsize(){
 	resizeCanvas(windowWidth,windowHeight);
 }
 
+function self_rep(val){
+  if (val == buffer[buffer.length-1]){
+    return true
+  }
+  else{
+    return false
+  }
+}
 function skipper(places,val){
   if (self_skipper){
     if ((Math.abs(val-buffer[buffer.length-1])%(n-1))>places-1 || ((Math.abs(val-buffer[buffer.length-1])%(n-1))==0)){
@@ -35,7 +43,12 @@ function skipper(places,val){
   }
 }
 
-// function chooser()
+function chooser(val){
+  if (buffer[buffer.length-1]==buffer.length-2 && (Math.abs(val-buffer[buffer.length-1])%(n-1))>places-1){
+    
+  }
+
+}
 
 //this condition gives the randomness selection criteria to create cool patterns
 function condition(preval,val){
