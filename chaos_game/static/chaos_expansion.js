@@ -4,7 +4,8 @@ var n = 4;
 var rad = 300;
 var perc = 0.5;
 var preval = 0;
-var self_skipper = false;
+var self_skipper = true;
+var buffer = [];
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
@@ -15,9 +16,9 @@ function reportsize(){
 	resizeCanvas(windowWidth,windowHeight);
 }
 
-function skipper(places,preval,val){
+function skipper(places,val){
   if (self_skipper){
-    if ((Math.abs(val-preval)%(n-1))>places-1 || ((Math.abs(val-preval)%(n-1))==0)){
+    if ((Math.abs(val-buffer[-2])%(n-1))>places-1 || ((Math.abs(val-buffer[-2])%(n-1))==0)){
       return false
     }
     else{
@@ -25,7 +26,7 @@ function skipper(places,preval,val){
     }
   }
   else{
-    if ((Math.abs(val-preval)%(n-1))>places-1){
+    if ((Math.abs(val-buffer[-2])%(n-1))>places-1){
       return false
     }
     else{
@@ -100,14 +101,20 @@ function draw(){
   for(let i=0; i<100; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
-    if (skipper(2,preval,val)){
+    if (skipper(2,val)){
     curpos.x = lerp(curpos.x,point_array[val].x,perc);
     curpos.y = lerp(curpos.y,point_array[val].y,perc);
     point(curpos.x,curpos.y);
     }
 
-
-    preval = val;
+    // console.log(buffer);
+    if (buffer.length > 3){
+      buffer.shift();
+      buffer.push(val);
+    }
+    else{
+      buffer.push(val);
+    }
   }
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
