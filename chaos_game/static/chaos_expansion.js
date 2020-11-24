@@ -4,7 +4,7 @@ var n = 4;
 var rad = 300;
 var perc = 0.5;
 var preval = 0;
-var self_skipper = true;
+var self_skipper = false;
 var buffer = [];
 
 function random_color(){
@@ -18,7 +18,7 @@ function reportsize(){
 
 function skipper(places,val){
   if (self_skipper){
-    if ((Math.abs(val-buffer[-2])%(n-1))>places-1 || ((Math.abs(val-buffer[-2])%(n-1))==0)){
+    if ((Math.abs(val-buffer[buffer.length-1])%(n-1))>places-1 || ((Math.abs(val-buffer[buffer.length-1])%(n-1))==0)){
       return false
     }
     else{
@@ -26,7 +26,7 @@ function skipper(places,val){
     }
   }
   else{
-    if ((Math.abs(val-buffer[-2])%(n-1))>places-1){
+    if ((Math.abs(val-buffer[buffer.length-1])%(n-1))>places-1){
       return false
     }
     else{
