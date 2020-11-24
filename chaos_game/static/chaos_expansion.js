@@ -1,9 +1,12 @@
 var point_array;
 var color_array
-var n = 5;
+var n = 4;
 var rad = 300;
-var perc = 0.65;
+var perc = 0.5;
 var preval = 0;
+var neighbours = 1;
+var self_skipper = false;
+var buffer = [];
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
@@ -12,6 +15,43 @@ function random_color(){
 
 function reportsize(){
 	resizeCanvas(windowWidth,windowHeight);
+}
+
+function self_rep(val){
+  if (buffer[buffer.length-1]==buffer.length-2){
+    return true
+  }
+  else{
+    return false
+  }
+}
+function skipper(places,val){
+  if (self_skipper){
+    if ((Math.abs(val-buffer[buffer.length-1])%(n-1))>places-1 || ((Math.abs(val-buffer[buffer.length-1])%(n-1))==0)){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+  else{
+    if ((Math.abs(val-buffer[buffer.length-1])%(n-1))>places-1){
+      return false
+    }
+    else{
+      return true
+    }
+  }
+}
+
+function chooser(val){
+  if ((buffer[buffer.length-1]==buffer[buffer.length-2]) && (Math.abs(val-buffer[buffer.length-1])%(n-1))==1){
+    return false;
+  }
+  else{
+    return true
+  }
+
 }
 
 //this condition gives the randomness selection criteria to create cool patterns
@@ -37,7 +77,7 @@ function point_generator(n){
   point_arr = [];
   noFill();
   beginShape();
-  rot = random(20);
+  rot = (random(n));
   for(let i=0; i<n; i++){
     console.log(rot);
     ang = i * (Math.PI*2 /n) + (Math.PI/rot) ;
@@ -53,6 +93,15 @@ function point_generator(n){
 
 window.addEventListener('resize', reportsize);
 
+function buffer_appender(){
+  if (buffer.length > 3){
+    buffer.shift();
+    buffer.push(val);
+  }
+  else{
+    buffer.push(val);
+  }
+}
 
 function init(){
   ww = windowWidth;
@@ -75,16 +124,15 @@ function setup(){
 
 function draw(){
 
-  for(let i=0; i<100; i++){
+  for(let i=0; i<1000; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
-    if (condition(preval,val)){
-    curpos.x = lerp(curpos.x,point_array[val].x,perc);
-    curpos.y = lerp(curpos.y,point_array[val].y,perc);
-  }
-
-    point(curpos.x,curpos.y);
-    preval = val;
+    if (skipper(2,val)){
+      curpos.x = lerp(curpos.x,point_array[val].x,perc);
+      curpos.y = lerp(curpos.y,point_array[val].y,perc);
+      point(curpos.x,curpos.y);
+      buffer_appender();
+    }
   }
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
