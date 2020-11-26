@@ -6,6 +6,8 @@ var rad = 300;
 var perc = 0.5;
 var preval = 0;
 var neighbours = 1;
+// var rot = (random(n));
+var rot = 1;
 var self_skipper = false;
 var buffer = [];
 
@@ -82,7 +84,6 @@ function point_generator(n){
   point_arr = [];
   noFill();
   beginShape();
-  rot = (random(n));
   for(let i=0; i<n; i++){
     console.log(rot);
     ang = i * (Math.PI*2 /n) + (Math.PI/rot) ;
@@ -115,6 +116,7 @@ function buffer_appender(){
 }
 
 function cycle(){
+  reset_arrays();
   background(0);
   for(let i=0; i<10000; i++){
     val = Math.floor(random(n));
@@ -130,10 +132,15 @@ function cycle(){
 
 
 function set_sliders(){
-  percentage_slider = createSlider(0,1,0.5,0.01);
+  percentage_slider = createSlider(0.2,0.8,0.5,0.01);
   count_slider = createSlider(3,20,4,1);
 }
 
+function reset_arrays(){
+  point_array = point_generator(n);
+  color_array = color_generator(n);
+
+}
 function init(){
   ww = windowWidth;
   wh = windowHeight;
@@ -150,8 +157,6 @@ function setup(){
   stroke(255);
   strokeWeight(1);
   background(0);
-  point_array = point_generator(n);
-  color_array = color_generator(n);
   curpos = createVector(random(ww),random(wh));                        // current random value for x, keeps changing
 }
 
