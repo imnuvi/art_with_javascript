@@ -10,6 +10,7 @@ var self_skipper = false;
 var buffer = [];
 
 let percentage_slider;
+let count_slider;
 
 
 function random_color(){
@@ -156,6 +157,7 @@ function setup(){
 
 function draw(){
   perc = percentage_slider.value();
+  n = count_slider.value();
   iter += 1;
   // if (iter < 100){
     cycle();
