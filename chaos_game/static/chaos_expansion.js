@@ -101,7 +101,7 @@ function resetsketch(){
 }
 
 window.addEventListener('resize', reportsize);
-percentage_slider.addEventListener('oninput',resetsketch);
+// percentage_slider.addEventListener('oninput',resetsketch);
 
 function buffer_appender(){
   if (buffer.length > 3){
@@ -114,7 +114,8 @@ function buffer_appender(){
 }
 
 function cycle(){
-  for(let i=0; i<1000; i++){
+  background(0);
+  for(let i=0; i<10000; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
     if (skipper(2,val)){
@@ -156,9 +157,9 @@ function setup(){
 function draw(){
   perc = percentage_slider.value();
   iter += 1;
-  if (iter < 100){
+  // if (iter < 100){
     cycle();
-  }
+  // }
   
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
