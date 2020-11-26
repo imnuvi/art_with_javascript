@@ -9,6 +9,9 @@ var neighbours = 1;
 var self_skipper = false;
 var buffer = [];
 
+let percentage_slider;
+
+
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
   return thecol;
@@ -92,7 +95,13 @@ function point_generator(n){
   return point_arr;
 }
 
+function resetsketch(){
+  iter = 0;
+
+}
+
 window.addEventListener('resize', reportsize);
+percentage_slider.addEventListener('oninput',resetsketch);
 
 function buffer_appender(){
   if (buffer.length > 3){
@@ -117,17 +126,21 @@ function cycle(){
   }
 }
 
+
+function set_sliders(){
+  percentage_slider = createSlider(0,1,0.5,0.01);
+  count_slider = createSlider(3,20,4,1);
+}
+
 function init(){
   ww = windowWidth;
   wh = windowHeight;
   canvas = createCanvas(ww,wh);
   canvas.style('z-index','-1');
   canvas.position(0,0);
+  set_sliders();
 }
 
-function set_sliders(){
-  percentage_slider = createSlider(0,1,0.5,0.01);
-}
 
 function setup(){
   init()
@@ -141,6 +154,7 @@ function setup(){
 }
 
 function draw(){
+  perc = percentage_slider.value();
   iter += 1;
   if (iter < 100){
     cycle();
