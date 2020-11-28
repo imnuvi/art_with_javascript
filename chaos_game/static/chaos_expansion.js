@@ -118,10 +118,10 @@ function buffer_appender(){
 function cycle(){
   reset_arrays();
   background(0);
-  for(let i=0; i<10000; i++){
+  for(let i=0; i<20000; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
-    if (chooser(val)){
+    if (skipper(2,val)){
       curpos.x = lerp(curpos.x,point_array[val].x,perc);
       curpos.y = lerp(curpos.y,point_array[val].y,perc);
       point(curpos.x,curpos.y);
@@ -159,8 +159,8 @@ function setup(){
   background(0);
   curpos = createVector(random(ww),random(wh));                        // current random value for x, keeps changing
   cycle();
-  percentage_slider.changed(cycle);
-  count_slider.changed(cycle);
+  percentage_slider.input(cycle);
+  count_slider.input(cycle);
 }
 
 function draw(){
