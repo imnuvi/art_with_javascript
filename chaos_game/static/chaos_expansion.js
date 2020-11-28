@@ -116,6 +116,8 @@ function buffer_appender(){
 }
 
 function cycle(){
+  perc = percentage_slider.value();
+  n = count_slider.value();
   reset_arrays();
   background(0);
   for(let i=0; i<20000; i++){
@@ -164,8 +166,6 @@ function setup(){
 }
 
 function draw(){
-  perc = percentage_slider.value();
-  n = count_slider.value();
   iter += 1;
   // if (iter < 100){
     // cycle();
