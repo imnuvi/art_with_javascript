@@ -121,7 +121,7 @@ function cycle(){
   for(let i=0; i<10000; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
-    if (skipper(2,val)){
+    if (chooser(val)){
       curpos.x = lerp(curpos.x,point_array[val].x,perc);
       curpos.y = lerp(curpos.y,point_array[val].y,perc);
       point(curpos.x,curpos.y);
@@ -158,6 +158,9 @@ function setup(){
   strokeWeight(1);
   background(0);
   curpos = createVector(random(ww),random(wh));                        // current random value for x, keeps changing
+  cycle();
+  percentage_slider.changed(cycle);
+  count_slider.changed(cycle);
 }
 
 function draw(){
@@ -165,9 +168,9 @@ function draw(){
   n = count_slider.value();
   iter += 1;
   // if (iter < 100){
-    cycle();
+    // cycle();
   // }
-  
+
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
 
