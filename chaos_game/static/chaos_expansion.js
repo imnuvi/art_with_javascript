@@ -1,5 +1,6 @@
 var point_array;
-var color_array
+var color_array;
+var iter = 0;
 var n = 4;
 var rad = 300;
 var perc = 0.5;
@@ -7,6 +8,10 @@ var preval = 0;
 var neighbours = 1;
 var self_skipper = false;
 var buffer = [];
+
+let percentage_slider;
+let count_slider;
+
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
@@ -91,7 +96,13 @@ function point_generator(n){
   return point_arr;
 }
 
+function resetsketch(){
+  iter = 0;
+
+}
+
 window.addEventListener('resize', reportsize);
+// percentage_slider.addEventListener('oninput',resetsketch);
 
 function buffer_appender(){
   if (buffer.length > 3){
@@ -103,13 +114,35 @@ function buffer_appender(){
   }
 }
 
+function cycle(){
+  background(0);
+  for(let i=0; i<10000; i++){
+    val = Math.floor(random(n));
+    stroke(color_array[val])
+    if (skipper(2,val)){
+      curpos.x = lerp(curpos.x,point_array[val].x,perc);
+      curpos.y = lerp(curpos.y,point_array[val].y,perc);
+      point(curpos.x,curpos.y);
+      buffer_appender();
+    }
+  }
+}
+
+
+function set_sliders(){
+  percentage_slider = createSlider(0,1,0.5,0.01);
+  count_slider = createSlider(3,20,4,1);
+}
+
 function init(){
   ww = windowWidth;
   wh = windowHeight;
   canvas = createCanvas(ww,wh);
   canvas.style('z-index','-1');
   canvas.position(0,0);
+  set_sliders();
 }
+
 
 function setup(){
   init()
@@ -123,17 +156,13 @@ function setup(){
 }
 
 function draw(){
-
-  for(let i=0; i<1000; i++){
-    val = Math.floor(random(n));
-    stroke(color_array[val])
-    if (skipper(2,val)){
-      curpos.x = lerp(curpos.x,point_array[val].x,perc);
-      curpos.y = lerp(curpos.y,point_array[val].y,perc);
-      point(curpos.x,curpos.y);
-      buffer_appender();
-    }
-  }
+  perc = percentage_slider.value();
+  n = count_slider.value();
+  iter += 1;
+  // if (iter < 100){
+    cycle();
+  // }
+  
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
 
