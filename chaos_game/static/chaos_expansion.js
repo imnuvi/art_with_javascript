@@ -11,8 +11,11 @@ var rot = 1;
 var self_skipper = false;
 var buffer = [];
 
+var point_count = 5000;
+
 let percentage_slider;
 let count_slider;
+let point_slider;
 
 
 function random_color(){
@@ -118,9 +121,10 @@ function buffer_appender(){
 function cycle(){
   perc = percentage_slider.value();
   n = count_slider.value();
+  point_count = point_slider.value();
   reset_arrays();
   background(0);
-  for(let i=0; i<20000; i++){
+  for(let i=0; i<point_count; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
     if (skipper(2,val)){
@@ -135,7 +139,8 @@ function cycle(){
 
 function set_sliders(){
   percentage_slider = createSlider(0.2,0.8,0.5,0.01);
-  count_slider = createSlider(3,20,4,1);
+  count_slider = createSlider(3,8,4,1);
+  point_slider = createSlider(3000,100000,30);
 }
 
 function reset_arrays(){
@@ -163,6 +168,7 @@ function setup(){
   cycle();
   percentage_slider.input(cycle);
   count_slider.input(cycle);
+  point_slider.input(cycle);
 }
 
 function draw(){
