@@ -108,7 +108,7 @@ function resetsketch(){
 window.addEventListener('resize', reportsize);
 // percentage_slider.addEventListener('oninput',resetsketch);
 
-function buffer_appender(){
+function buffer_appender(val){
   if (buffer.length > 3){
     buffer.shift();
     buffer.push(val);
@@ -116,6 +116,7 @@ function buffer_appender(){
   else{
     buffer.push(val);
   }
+  console.log(buffer);
 }
 
 function cycle(){
@@ -127,11 +128,11 @@ function cycle(){
   for(let i=0; i<point_count; i++){
     val = Math.floor(random(n));
     stroke(color_array[val])
-    if (skipper(2,val)){
+    if (chooser(val)){
       curpos.x = lerp(curpos.x,point_array[val].x,perc);
       curpos.y = lerp(curpos.y,point_array[val].y,perc);
       point(curpos.x,curpos.y);
-      buffer_appender();
+      buffer_appender(val);
     }
   }
 }
@@ -140,12 +141,13 @@ function cycle(){
 function set_sliders(){
   percentage_slider = createSlider(0.2,0.8,0.5,0.01);
   count_slider = createSlider(3,8,4,1);
-  point_slider = createSlider(3000,100000,30);
+  point_slider = createSlider(3000,50000,30);
 }
 
 function reset_arrays(){
   point_array = point_generator(n);
   color_array = color_generator(n);
+  buffer = [];
 
 }
 function init(){
@@ -179,5 +181,6 @@ function draw(){
 
   // triangle(ax,ay,bx,by,cx,cy);
   // circle(mouseX,mouseY,100);
+
 
 }
