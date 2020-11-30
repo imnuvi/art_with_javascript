@@ -28,7 +28,7 @@ function reportsize(){
 }
 
 function self_rep(val){
-  if (buffer[buffer.length-1]==buffer.length-2){
+  if (buffer[buffer.length-1]==buffer[buffer.length-2]){
     return true
   }
   else{
@@ -55,18 +55,18 @@ function skipper(places,val){
 }
 
 function chooser(val){
-  if ((buffer[buffer.length-1]==buffer[buffer.length-2]) && (Math.abs(val-buffer[buffer.length-1])%(n-1))==1){
+  if ((buffer[buffer.length-1]==buffer[buffer.length-2]) && (Math.abs(val-buffer[buffer.length-1])%(n-1))==2 && self_rep()){
     return false;
   }
   else{
-    return true
+    return true;
   }
 
 }
 
 //this condition gives the randomness selection criteria to create cool patterns
-function condition(preval,val){
-  if (preval==val){
+function condition(val){
+  if (buffer[buffer.length-1]==val){
     return 0
   }
   else{
@@ -88,7 +88,7 @@ function point_generator(n){
   noFill();
   beginShape();
   for(let i=0; i<n; i++){
-    console.log(rot);
+    // console.log(rot);
     ang = i * (Math.PI*2 /n) + (Math.PI/rot) ;
     corner = p5.Vector.fromAngle(ang);
     point_arr.push(corner);
@@ -116,7 +116,7 @@ function buffer_appender(val){
   else{
     buffer.push(val);
   }
-  console.log(buffer);
+  // console.log(buffer);
 }
 
 function cycle(){
