@@ -1,5 +1,5 @@
-
-
+let star_list = [];
+count = 200;
 
 function random_position(){
 	return [random(0,ww),random(0,wh)];
@@ -13,11 +13,17 @@ function setup(){
   canvas.position(0,0);
 	background(0);
 
-  for (let i=0; i<40; i++){
-	  circle(random_position()[0],random_position()[1],random(0,20));
+  for (let i=0; i<count; i++){
+	  star_list.push(new Star);
   }
 }
 
 function draw(){
+		translate(ww/2,wh/2);
+		background(0)
 
+	  for (let i=0; i<count; i++){
+			star_list[i].update();
+		  star_list[i].show();
+	  }
 }
