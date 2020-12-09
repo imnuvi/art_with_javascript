@@ -21,8 +21,11 @@ function setup(){
 
 function draw(){
 		translate(ww/2,wh/2);
-		background(0)
-		speed = map(mouseX,0,ww,0.2,50)
+		background(0);
+		angleMode(DEGREES);
+		speed = map(mouseX,0,ww,0.2,50);
+		rotation = map(mouseY,0,wh,0,50*PI);
+		rotate(rotation);
 	  for (let i=0; i<count; i++){
 			star_list[i].update();
 		  star_list[i].show();
