@@ -1,5 +1,5 @@
 let star_list = [];
-let count = 400;
+let count = 100;
 var speed
 
 function random_color(){
