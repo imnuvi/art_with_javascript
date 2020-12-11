@@ -33,8 +33,16 @@ function setup(){
 function draw(){
   circle(mouseX,mouseY,100);
   beginShape();
-  for (let i = 0; i < 4; i++){
-    vertex(100*i,200*i);
+  vertex(100,100);
+  vertex(100,200);
+  vertex(200,200);
+  vertex(200,100);
+
+  endShape(CLOSE);
+}
+
+function myShape(){
+  for (let i = 0; i<500; i++){
+    
   }
-  endShape();
 }
