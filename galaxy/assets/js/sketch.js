@@ -1,5 +1,5 @@
 let star_list = [];
-let count = 100;
+let count = 300;
 var speed
 
 function random_color(){
@@ -29,8 +29,8 @@ function draw(){
 		translate(ww/2,wh/2);
 		background(0);
 		angleMode(DEGREES);
-		speed = map(mouseX,0,ww,-50,50);
-		rotation = map(mouseY,0,wh,0,50*PI);
+		speed = map(mouseX,0,ww,-100,100);
+		rotation = map(mouseY,0,wh,0,100*PI);
 		rotate(rotation);
 	  for (let i=0; i<count; i++){
 			star_list[i].update();

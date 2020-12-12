@@ -2,7 +2,7 @@ function Star(){
   this.x = random(-ww/2,ww/2);
   this.y = random(-wh,wh);
   this.z = random(ww);
-  this.size = map(this.z,0,ww,0,20);
+  this.size = map(this.z,0,ww,20,0);
   this.col = random_color();
 }
 
