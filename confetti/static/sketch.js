@@ -16,6 +16,7 @@ function init(){
 
 function setup(){
   pixelDensity(2);
+  angleMode(DEGREES);
   init();
   conf = new Confetti(ww/2,0);
 }

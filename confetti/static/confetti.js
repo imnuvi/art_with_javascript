@@ -1,8 +1,10 @@
 function Confetti(x,y){
   this.pos = createVector(x,y);
-  this.width = 40;
-  this.height = 40;
-  this.rot = 90;
+  this.max_width = random(20,40);
+  this.max_height = random(20,40);
+  this.rot = random(20,60);
+
+  this.max_x_dev = random(30,60);
   // this.size = 20;
 }
 
