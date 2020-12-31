@@ -16,10 +16,12 @@ function init(){
 function setup(){
   pixelDensity(2);
   init();
-  conf = new Confetti(ww/2,wh/2);
+  conf = new Confetti(ww/2,0);
 }
 
 function draw(){
-  circle(mouseX,mouseY,100);
+  background(0);
+  // circle(mouseX,mouseY,100);
+  conf.update();
   conf.show();
 }

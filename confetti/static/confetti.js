@@ -7,7 +7,13 @@ function Confetti(x,y){
 }
 
 Confetti.prototype = {
+  update: function(){
+    this.pos.y += 10;
+  },
+
   show: function(){
+    push();
     rect(this.pos.x,this.pos.y,this.width,this.height);
+    pop();
   }
 }
