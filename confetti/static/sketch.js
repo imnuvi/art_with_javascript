@@ -4,19 +4,6 @@ function random_color(){
   return thecol;
 }
 
-function reportsize(){
-	resizeCanvas(windowWidth,windowHeight);
-}
-
-
-// function reportsize(){
-// 	resizeCanvas(windowWidth,windowHeight);
-// 	init();
-// }
-
-
-window.addEventListener('resize', reportsize);
-
 
 function init(){
   ww = windowWidth;
@@ -29,8 +16,10 @@ function init(){
 function setup(){
   pixelDensity(2);
   init();
+  conf = new Confetti(ww/2,wh/2);
 }
 
 function draw(){
   circle(mouseX,mouseY,100);
+  conf.show();
 }
