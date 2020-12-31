@@ -1,3 +1,4 @@
+let gravity_value = 10;
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));

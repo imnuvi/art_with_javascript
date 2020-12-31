@@ -7,13 +7,24 @@ function Confetti(x,y){
 }
 
 Confetti.prototype = {
+  maxmin: function(val,dev,max,min){
+    if (val >= max || val <= min){
+      return false;
+    }
+    else{
+      return true;
+    }
+  },
+
   update: function(){
-    this.pos.y += 10;
+    this.pos.y += gravity_value;
   },
 
   show: function(){
     push();
-    rect(this.pos.x,this.pos.y,this.width,this.height);
+    translate(this.pos.x,this.pos.y);
+    rotate(this.rot);
+    rect(0,0,this.width,this.height);
     pop();
   }
 }
