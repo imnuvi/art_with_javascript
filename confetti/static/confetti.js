@@ -8,7 +8,7 @@ function Confetti(x,y){
   this.max_width = random(10,30);
   this.max_height = random(10,20);
   this.max_rot = random(20,30);
-  this.max_x_dev = random(80,120);
+  this.max_x_dev = random(90,300);
 
 
   this.width_vel = random(0.5,4);
