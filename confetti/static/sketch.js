@@ -15,7 +15,7 @@ function init(){
   canvas.style('z-index','-1');
   canvas.position(0,0);
 
-  for(let i=0; i<30; i++){
+  for(let i=0; i<60; i++){
     confetti_array.push(new Confetti(random(ww),random(-500,0)));
   }
 }

@@ -5,16 +5,16 @@ function Confetti(x,y){
   this.color = random_color();
   this.grav = random(2,gravity_value);
 
-  this.max_width = random(20,40);
-  this.max_height = random(20,40);
-  this.max_rot = random(20,60);
+  this.max_width = random(10,30);
+  this.max_height = random(10,20);
+  this.max_rot = random(20,30);
   this.max_x_dev = random(80,120);
 
 
   this.width_vel = random(0.5,4);
-  this.height_vel = random(1,4);
-  this.rot_vel = random(1,4);
-  this.x_vel = 5;
+  this.height_vel = random(0.1,4);
+  this.rot_vel = random(0.1,1);
+  this.x_vel = random(0.1,5);
 
   this.x_moved = 0;
   this.width = random(-this.max_width,this.max_width);
