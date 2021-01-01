@@ -7,6 +7,11 @@ function random_color(){
   return thecol;
 }
 
+// function random_color(){
+//   col1 = color(255,215,0);
+//   col2 = color(190,194,203);
+//   return ((random()>0.5) ? col1 : col2);
+// }
 
 function init(){
   ww = windowWidth;
