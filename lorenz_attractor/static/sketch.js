@@ -1,13 +1,13 @@
-let x = 0;
+let x = 10;
 let y = 0;
 let z = 0;
 
 // Prandtl number
-let a = 1;
+let a = 10;
 // Rayleigh number
-let b = 1;
+let b = 28;
 // parameters
-let c = 1;
+let c = 8/3;
 
 
 
@@ -31,11 +31,17 @@ function setup(){
 
 function draw(){
 
-  dt = 0.001;
+  dt = 0.01;
   dx = (a * ( y - x )) * dt;
   dy = (x * ( b - z ) - y) * dt;
   dz = (x * y - c * z ) * dt;
 
+  x = x + dx;
+  y = y + dy;
+  z = z + dz;
   stroke(255);
+  translate(ww/2,wh/2);
+  console.log(x, y);
+  point(x*10,y*10);
   // circle(mouseX,mouseY,100);
 }
