@@ -1,22 +1,19 @@
+let x = 0;
+let y = 0;
+let z = 0;
+
+let a = 0;
+let b = 0;
+let c = 0;
+
+
+
+
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
   return thecol;
 }
-
-function reportsize(){
-	resizeCanvas(windowWidth,windowHeight);
-}
-
-
-// function reportsize(){
-// 	resizeCanvas(windowWidth,windowHeight);
-// 	init();
-// }
-
-
-window.addEventListener('resize', reportsize);
-
 
 function init(){
   ww = windowWidth;
