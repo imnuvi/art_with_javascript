@@ -1,3 +1,5 @@
+let s1, s2, p1, p2;
+
 
 // Prandtl number
 let a = 10;
@@ -24,15 +26,14 @@ function init(){
   colorMode(HSB);
   background(0);
 
-  let s1 = createVector(1,10,0);
-  let s2 = createVector(1,10,0);
+  s1 = createVector(1,0,0);
+  s2 = createVector(1,10,0);
   p1 = [];
   p2 = [];
 
 }
 
-function update(vec){
-
+function update_pos(vec){
   x = vec.x;
   y = vec.y;
   z = vec.z;
@@ -45,11 +46,9 @@ function update(vec){
   y = y + dy;
   z = z + dz;
 
-  nx = x*mag;
-  ny = y*mag;
-  nz = z*mag;
+  n = createVector(x,y,z);
 
-  return p5.Vector(nx,ny,nz);
+  return n;
 }
 
 function setup(){
@@ -59,18 +58,21 @@ function setup(){
 
 function draw(){
 
-  s1 = update(s1);
-  s2 = update(s2);
+  p1.push(s1.copy().mult(mag));
+  p2.push(s2.copy().mult(mag));
+
+
+  s1 = update_pos(s1);
+  s2 = update_pos(s2);
 
   noFill();
   stroke(255);
   translate(ww/2,wh/2);
-  console.log(x, y);
-  points_array.push(new p5.Vector(nx,ny));
+  // console.log(x, y);
 
   let hu = 0
   beginShape();
-  for (let point of points_array){
+  for (let point of p1){
     stroke(hu,255,255);
     vertex(point.x,point.y);
     hu += 0.1;
@@ -79,6 +81,7 @@ function draw(){
     }
   }
   endShape();
-  // point(nx,ny);
+  point(s1.x,s1.y);
+  // console.log(s1.x,s1.y);
   // circle(mouseX,mouseY,100);
 }
