@@ -51,6 +51,15 @@ function update_pos(vec){
   return n;
 }
 
+function show_pos(lst,hu){
+  beginShape();
+  for (let point of lst){
+    stroke(hu,255,255);
+    vertex(point.x,point.y);
+  }
+  endShape();
+}
+
 function setup(){
   pixelDensity(2);
   init();
@@ -65,23 +74,16 @@ function draw(){
   s1 = update_pos(s1);
   s2 = update_pos(s2);
 
+
   noFill();
   stroke(255);
   translate(ww/2,wh/2);
-  // console.log(x, y);
 
-  let hu = 0
-  beginShape();
-  for (let point of p1){
-    stroke(hu,255,255);
-    vertex(point.x,point.y);
-    hu += 0.1;
-    if (hu > 255){
-      hu = 0;
-    }
-  }
-  endShape();
-  point(s1.x,s1.y);
+  show_pos(p1,50);
+  show_pos(p2,150);
+
+
+  // point(s1.x,s1.y);
   // console.log(s1.x,s1.y);
   // circle(mouseX,mouseY,100);
 }
