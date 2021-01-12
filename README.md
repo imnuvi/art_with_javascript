@@ -12,11 +12,10 @@ index:
 6. [confetti](5_confetti)
 
 <ul>
-  <li>![chaos-game]()</li>
-  <li>![galaxy]()</li>
-  <li>![pulsing circles]()</li>
-  <li>![pulsing_circles(smooth)]()</li>
-  <li>![square filler]()</li>
-  <li>![confetti]()</li>
-  <li>![]()</li>
+  <li>![chaos-game](./images/1_chaos_game.png)</li>
+  <li>![galaxy](./images/2_galaxy.png)</li>
+  <li>![pulsing circles](./images/3_1_pulsing_circles.png)</li>
+  <li>![pulsing_circles(smooth)](./images/3_pulsing_circles_with_sine.png)</li>
+  <li>![square filler](./images/4_square_filler.png)</li>
+  <li>![confetti](./images/5_confetti.png)</li>
 </ul>
