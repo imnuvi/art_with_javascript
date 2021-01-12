@@ -9,7 +9,7 @@ index:
 3. [pulsing circles](3_1_pulsing_circles)
 4. [pulsing circles(smooth)](3_pulsing_circles_with_sine)
 5. [square filler](4_square_filler)
-6. [square filler](4_square_filler)
+6. [confetti](5_confetti)
 
 <ul>
   <li>![chaos-game]()</li>
