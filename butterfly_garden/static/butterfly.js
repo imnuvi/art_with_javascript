@@ -8,6 +8,6 @@ Butterfly.prototype = {
   },
 
   update: function(){
-    this.pos = this.pos.add(p5.Vector.random2D());
+    this.pos = this.pos.add(p5.Vector.random2D().mult(2));
   }
 }
