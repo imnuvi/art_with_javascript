@@ -12,4 +12,8 @@ Butterfly.prototype = {
   update: function(){
     this.pos = this.pos.add(p5.Vector.random2D().mult(2));
   }
+
+  spawn: function(){
+    // creates a new butterfly at random
+  }
 }
