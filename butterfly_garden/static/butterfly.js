@@ -1,5 +1,7 @@
 function Butterfly(xpos,ypos){
   this.pos = createVector(xpos,ypos);
+  this.length = random(10,50);
+  this.height = random(10,50);
 }
 
 Butterfly.prototype = {
