@@ -30,7 +30,7 @@ function setup(){
 
 function draw(){
   for (let i=0; i<butterfly_list.length; i++){
-    butterfly_list[i].update();
+    // butterfly_list[i].update();
     butterfly_list[i].show();
   }
   // circle(mouseX,mouseY,100);
