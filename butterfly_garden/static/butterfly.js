@@ -8,6 +8,7 @@ function Butterfly(xpos,ypos){
 
 Butterfly.prototype = {
   show: function(){
+
     fill(this.color);
     circle(this.pos.x,this.pos.y,this.size);
 

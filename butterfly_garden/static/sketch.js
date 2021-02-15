@@ -18,6 +18,7 @@ function init(){
   canvas = createCanvas(ww,wh);
   canvas.style('z-index','-1');
   canvas.position(0,0);
+  background(10,10,10);
   for (let i=0; i<100; i++){
     butterfly_list.push(new Butterfly(random(0,ww),random(0,wh)))
   }
@@ -26,6 +27,7 @@ function init(){
 function setup(){
   pixelDensity(2);
   init();
+  noStroke();
 }
 
 function draw(){
