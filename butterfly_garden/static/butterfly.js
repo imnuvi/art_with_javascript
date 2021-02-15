@@ -21,3 +21,9 @@ Butterfly.prototype = {
 
 
 }
+
+
+function pattern(size){
+  // this is a random pattern generator for the butterfly wings.
+  
+}
