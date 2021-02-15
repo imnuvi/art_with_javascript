@@ -12,7 +12,7 @@ Butterfly.prototype = {
     fill(this.color);
     circle(this.pos.x,this.pos.y,this.size);
 
-    circle(this.pos.x+this.length,this.pos.y+this.length,this.size);
+    circle(this.pos.x+this.length,this.pos.y+this.height,this.size);
   },
 
   update: function(){
@@ -25,5 +25,5 @@ Butterfly.prototype = {
 
 function pattern(size){
   // this is a random pattern generator for the butterfly wings.
-  
+
 }
