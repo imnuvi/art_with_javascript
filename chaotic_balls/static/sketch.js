@@ -24,6 +24,7 @@ function init(){
   canvas = createCanvas(ww,wh);
   canvas.style('z-index','-1');
   canvas.position(0,0);
+  ball = new bouncyBall(30, 'blue', 0.5);
 }
 
 function setup(){
@@ -32,5 +33,7 @@ function setup(){
 }
 
 function draw(){
-  circle(mouseX,mouseY,100);
+  // circle(mouseX,mouseY,100);
+  ball.render();
+  ball.update();
 }
