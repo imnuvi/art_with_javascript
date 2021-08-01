@@ -22,5 +22,5 @@ bouncyBall.prototype = {
     render: function(){
         fill(this.color);
         circle(this.cur_pos.x, this.cur_pos.y, this.radius);
-    }    
+    }
 }
