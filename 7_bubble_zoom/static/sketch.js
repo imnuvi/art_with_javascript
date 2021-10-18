@@ -1,8 +1,13 @@
 let bubs = [];
 let palette;
 let minsize = 20;
+
+let tot_diff = 300;
+
 let maxdiff = 150;
 let maxlen = 300;
+let cen_x;
+let cen_y;
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
@@ -15,6 +20,7 @@ function reportsize(){
 }
 
 window.addEventListener('resize', reportsize);
+
 
 function mousePressed(){
   resetscreen()
@@ -47,6 +53,9 @@ function renderscreen(){
 function init(){
   ww = windowWidth;
   wh = windowHeight;
+
+  cen_x = ww/2
+  cen_y = wh/2
 
   canvas = createCanvas(ww,wh);
   canvas.style('z-index','-1');
