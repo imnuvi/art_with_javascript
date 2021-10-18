@@ -66,7 +66,7 @@ function init(){
   canvas = createCanvas(ww,wh);
   canvas.style('z-index','-1');
   canvas.position(0,0);
-  
+  noStroke();
   renderscreen();
 
 
