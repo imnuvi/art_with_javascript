@@ -1,6 +1,7 @@
 let cells = [];
 let minwidth = 50;
 let square_size = minwidth;
+let palette;
 
 function random_color(){
   thecol = color(random(0,255),random(0,255),random(0,255));
@@ -30,6 +31,8 @@ function mousePressed(){
 
 function renderscreen(){
   bg_color = random_color()
+  palette = [random_color(), random_color(), random_color(), random_color()]
+
 
   background(bg_color);
   for (let i=0; i<cells.length; i++){
@@ -55,6 +58,7 @@ function init(){
   h_count = Math.round(wh/square_size)
 
   cells = create_2d_array(w_count, h_count)
+  palette = [random_color(), random_color(), random_color(), random_color()]
 
   for (let i=0; i<w_count; i++){
     for (let j=0; j<h_count;j++){

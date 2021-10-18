@@ -4,7 +4,7 @@ function cell(xpos, ypos, width, height){
   this.size = width
   this.width = width
   this.height = height
-  this.color = random_color()
+  this.color = palette[Math.floor(Math.random() * palette.length)]
 }
 
 cell.prototype = {
