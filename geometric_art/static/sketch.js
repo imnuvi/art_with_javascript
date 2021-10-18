@@ -29,9 +29,25 @@ function mousePressed(){
     renderscreen();
 }
 
+function set_palette(){
+  palette = [random_color(), random_color(), random_color(), random_color()]
+}
+
+function resetscreen(){
+  set_palette()
+
+  for (let i=0; i<w_count; i++){
+    for (let j=0; j<h_count;j++){
+      size_opts = [square_size, square_size*2]
+      size = size_opts[Math.floor(Math.random() * size_opts.length)]
+      cells[i][j] = new cell(i*square_size, j*square_size, size, size)
+    }
+  }
+}
+
 function renderscreen(){
   bg_color = random_color()
-  palette = [random_color(), random_color(), random_color(), random_color()]
+  resetscreen()
 
 
   background(bg_color);
@@ -58,19 +74,13 @@ function init(){
   h_count = Math.round(wh/square_size)
 
   cells = create_2d_array(w_count, h_count)
-  palette = [random_color(), random_color(), random_color(), random_color()]
 
-  for (let i=0; i<w_count; i++){
-    for (let j=0; j<h_count;j++){
-      cells[i][j] = new cell(i*square_size, j*square_size, square_size, square_size)
-    }
-  }
-  console.log(cells)
 
   canvas = createCanvas(ww,wh);
   canvas.style('z-index','-1');
   canvas.position(0,0);
   noStroke();
+  resetscreen();
   renderscreen();
 
 

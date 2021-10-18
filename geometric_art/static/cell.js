@@ -22,7 +22,6 @@ cell.prototype = {
   render_triangle: function(orientation){
     // todo: make this function darn robust. works for now
     let vals;
-    console.log(orientation)
     if (orientation == 0) {
       vals = [this.xpos, this.ypos, this.xpos+this.size, this.ypos, this.xpos, this.ypos+this.size]
     }
