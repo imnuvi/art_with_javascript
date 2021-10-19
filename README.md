@@ -6,10 +6,10 @@ index:
 
 1. [chaos-game](1_chaos_game)
 2. [galaxy](2_galaxy)
-3. [pulsing circles](3_1_pulsing_circles)
-4. [pulsing circles(smooth)](3_pulsing_circles_with_sine)
-5. [square filler](4_square_filler)
-6. [confetti](5_confetti)
+3. [pulsing circles(smooth)](3_pulsing_circles_with_sine)
+4. [square filler](4_square_filler)
+5. [confetti](5_confetti)
+6. [shaper](6_geometric_art)
 
 <br>
 
@@ -17,11 +17,11 @@ index:
 ![chaos-game](./images/1_chaos_game.png)
 2. [galaxy](2_galaxy)
 ![galaxy](./images/2_galaxy.png)
-3. [pulsing circles](3_1_pulsing_circles)
-![pulsing circles](./images/3_1_pulsing_circles.png)
-4. [pulsing circles(smooth)](3_pulsing_circles_with_sine)
+3. [pulsing circles(smooth)](3_pulsing_circles_with_sine)
 ![pulsing_circles(smooth)](./images/3_pulsing_circles_with_sine.png)
-5. [square filler](4_square_filler)
+4. [square filler](4_square_filler)
 ![square filler](./images/4_square_filler.png)
-6. [confetti](5_confetti)
+5. [confetti](5_confetti)
 ![confetti](./images/5_confetti.png)
+6. [shaper](6_geometric_art)
+![shaper](./images/6_shaper.png)
