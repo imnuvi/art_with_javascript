@@ -10,6 +10,8 @@ index:
 4. [square filler](4_square_filler)
 5. [confetti](5_confetti)
 6. [shaper](6_geometric_art)
+7. [bubble magnifier](7_bubble_zoom)
+8. [Lorenz attractor](8_lorenz_attractor)
 
 <br>
 
@@ -25,3 +27,7 @@ index:
 ![confetti](./images/5_confetti.png)
 6. [shaper](6_geometric_art)
 ![shaper](./images/6_shaper.png)
+7. [bubble magnifier](7_bubble_zoom)
+![bubble zoom](./images/7_bubble_zoom.png)
+8. [Lorenz attractor](8_lorenz_attractor)
+![lorenz attractor](./images/8_lorenz_attractor.png)
