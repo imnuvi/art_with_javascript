@@ -40,7 +40,9 @@ function resetscreen(){
     for (let j=0; j<h_count;j++){
       size_opts = [square_size, square_size*2]
       size = size_opts[Math.floor(Math.random() * size_opts.length)]
-      cells[i][j] = new cell(i*square_size, j*square_size, size, size)
+      square_dev_x = i*square_size - Math.floor(Math.random())
+      square_dev_y = j*square_size - Math.floor(Math.random())
+      cells[i][j] = new cell(square_dev_x , square_dev_y,  size, size)
     }
   }
 }

@@ -5,14 +5,17 @@ function cell(xpos, ypos, width, height){
   this.width = width
   this.height = height
   this.color = palette[Math.floor(Math.random() * palette.length)]
+  this.background_color = palette[Math.floor(Math.random() * palette.length)]
 }
 
 cell.prototype = {
   show: function(){
+    fill(this.background_color)
+    noStroke();
+    rect(this.xpos, this.ypos, this.width, this.height)
     fill(this.color)
     noStroke();
-    // rect(this.xpos, this.ypos, this.width, this.height)
-    opts = [ "render_circle", "render_triangle", "render_duality" ]
+    opts = [ "render_triangle", "render_duality" ]
     orientation = Math.floor(Math.random() * 4)
     this[opts[Math.floor(Math.random() * opts.length)]](orientation)
   },
@@ -53,5 +56,21 @@ cell.prototype = {
     }
     circle(this.xpos+this.size/2, this.ypos+this.size/2, this.size)
     triangle(vals[0], vals[1], vals[2], vals[3], vals[4], vals[5])
+  },
+  render_squarrow: function(orientation){
+    if (orientation == 0){
+      vals = []
+    }
+  },
+  helper_function: function(location_number){
+    location_map = [(0,0),(0,1),(0,2),(1,0),(1,1),(1,2),(2,1),(2,2),(2,3)]
+    // given a keypad number (1-9) this function returns the respective x and y co ordinates for that location. eg: 1 - (0,0),  2 - (width/2, 0) , 8 - (width/2, height) and so on
+    unit = this.size/2
+    yloc = location_map[location_number][0]
+    xloc = location_map[location_number][1]
+    xval = unit * xloc 
+    yval = unit * yloc 
+    return (x_val, y_val)
   }
+
 }
