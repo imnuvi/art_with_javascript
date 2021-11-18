@@ -38,17 +38,21 @@ function resetscreen(){
 
   for (let i=0; i<w_count; i++){
     for (let j=0; j<h_count;j++){
-      size_opts = [square_size, square_size*2]
-      size = size_opts[Math.floor(Math.random() * size_opts.length)]
-      square_dev_x = i*square_size - Math.floor(Math.random())
-      square_dev_y = j*square_size - Math.floor(Math.random())
+      let size_opts = [square_size, square_size*2]
+      let size = size_opts[Math.floor(Math.random() * size_opts.length)]
+      console.log(size)
+      //let square_dev_x = i*square_size + (Math.floor(Math.random()*3) - 1)*size/2
+      //let square_dev_y = j*square_size + (Math.floor(Math.random()*3) - 1)*size/2
+      let square_dev_y = j*square_size
+      let square_dev_x = i*square_size
+      console.log(square_dev_x, square_dev_y)
       cells[i][j] = new cell(square_dev_x , square_dev_y,  size, size)
     }
   }
 }
 
 function renderscreen(){
-  bg_color = random_color()
+  bg_color = palette[Math.floor(Math.random() * palette.length)]
   resetscreen()
 
 

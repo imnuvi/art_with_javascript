@@ -10,14 +10,15 @@ function cell(xpos, ypos, width, height){
 
 cell.prototype = {
   show: function(){
-    fill(this.background_color)
+    //fill(this.background_color)
     noStroke();
-    rect(this.xpos, this.ypos, this.width, this.height)
+    // rect(this.xpos, this.ypos, this.width, this.height)
     fill(this.color)
     noStroke();
-    opts = [ "render_triangle", "render_duality" , "render_squarrow"]
+    opts = [ "render_triangle", "render_duality" , "render_squarrow" ]
     orientation = Math.floor(Math.random() * 4)
     this[opts[Math.floor(Math.random() * opts.length)]](orientation)
+    // this.render_circle()
   },
   render_circle: function(){
     circle(this.xpos+this.size/2, this.ypos+this.size/2, this.size)
@@ -74,7 +75,7 @@ cell.prototype = {
       locs = [this.helper_function(5),this.helper_function(9)]
       vals = [locs[0][0], locs[0][1], locs[1][0], locs[1][1]]
     }
-    rect(vals[0], vals[1], vals[2], vals[3])
+    rect(vals[0], vals[1], this.size/2, this.size/2)
   },
   helper_function: function(location_number){
     let location_map = [[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,1],[2,2],[2,3]]
@@ -87,6 +88,8 @@ cell.prototype = {
      let x_val = this.xpos +  unit * xloc 
      let y_val = this.ypos + unit * yloc 
     return [x_val, y_val]
-  }
-
+  },
+  skip_render: function(){
+    
+    }
 }
