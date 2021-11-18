@@ -89,6 +89,25 @@ cell.prototype = {
      let y_val = this.ypos + unit * yloc 
     return [x_val, y_val]
   },
+  rando_strip: function(){
+    if (orientation == 0){
+      locs = [this.helper_function(1),this.helper_function(5)]
+      vals = [locs[0][0], locs[0][1], locs[1][0], locs[1][1]]
+    }
+    if (orientation == 1){
+      locs = [this.helper_function(1),this.helper_function(5)]
+      vals = [locs[0][0], locs[0][1], locs[1][0], locs[1][1]]
+    }
+    if (orientation == 0){
+      locs = [this.helper_function(1),this.helper_function(5)]
+      vals = [locs[0][0], locs[0][1], locs[1][0], locs[1][1]]
+    }
+    if (orientation == 0){
+      locs = [this.helper_function(1),this.helper_function(5)]
+      vals = [locs[0][0], locs[0][1], locs[1][0], locs[1][1]]
+    }
+
+    },
   skip_render: function(){
     
     }
