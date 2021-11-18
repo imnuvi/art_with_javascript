@@ -53,5 +53,8 @@ cell.prototype = {
     }
     circle(this.xpos+this.size/2, this.ypos+this.size/2, this.size)
     triangle(vals[0], vals[1], vals[2], vals[3], vals[4], vals[5])
-  }
+  },
+  render_squarrow: function(orientation){
+
+                   }
 }

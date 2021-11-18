@@ -25,44 +25,11 @@ function create_2d_array(x_len,y_len){
   return arr;
 }
 
-function mousePressed(){
-    renderscreen();
-}
 
 function set_palette(){
   palette = [random_color(), random_color(), random_color(), random_color()]
 }
 
-function resetscreen(){
-  set_palette()
-
-  for (let i=0; i<w_count; i++){
-    for (let j=0; j<h_count;j++){
-      let size_opts = [square_size, square_size*2]
-      let size = size_opts[Math.floor(Math.random() * size_opts.length)]
-      console.log(size)
-      //let square_dev_x = i*square_size + (Math.floor(Math.random()*3) - 1)*size/2
-      //let square_dev_y = j*square_size + (Math.floor(Math.random()*3) - 1)*size/2
-      let square_dev_y = j*square_size
-      let square_dev_x = i*square_size
-      console.log(square_dev_x, square_dev_y)
-      cells[i][j] = new cell(square_dev_x , square_dev_y,  size, size)
-    }
-  }
-}
-
-function renderscreen(){
-  bg_color = palette[Math.floor(Math.random() * palette.length)]
-  resetscreen()
-
-
-  background(bg_color);
-  for (let i=0; i<cells.length; i++){
-    for (let j=0; j<cells[0].length; j++){
-      cells[i][j].show()
-    }
-  }
-}
 
 function init(){
   ww = windowWidth;
@@ -86,8 +53,6 @@ function init(){
   canvas.style('z-index','-1');
   canvas.position(0,0);
   noStroke();
-  resetscreen();
-  renderscreen();
 
 
 }
@@ -99,6 +64,8 @@ function setup(){
 }
 
 function draw(){
+  fill("red")
+  circle(mouseX, mouseY, 100);
   // background(bg_color)
   // circle(mouseX,mouseY,100);
 }
