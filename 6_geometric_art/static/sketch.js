@@ -29,6 +29,13 @@ function mousePressed(){
     renderscreen();
 }
 
+function keyPressed(){
+  if (key == ' '){
+    let clip = get(0,0,square_size*10, square_size*20)
+    clip.save('/Users/ramprakash/development/visual_stuff/screenshots/screenshot_1.png')
+  }
+}
+
 function set_palette(){
   palette = [random_color(), random_color(), random_color(), random_color()]
 }
