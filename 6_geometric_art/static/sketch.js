@@ -47,12 +47,10 @@ function resetscreen(){
     for (let j=0; j<h_count;j++){
       let size_opts = [square_size, square_size*2]
       let size = size_opts[Math.floor(Math.random() * size_opts.length)]
-      console.log(size)
       //let square_dev_x = i*square_size + (Math.floor(Math.random()*3) - 1)*size/2
       //let square_dev_y = j*square_size + (Math.floor(Math.random()*3) - 1)*size/2
       let square_dev_y = j*square_size
       let square_dev_x = i*square_size
-      console.log(square_dev_x, square_dev_y)
       cells[i][j] = new cell(square_dev_x , square_dev_y,  size, size)
     }
   }
