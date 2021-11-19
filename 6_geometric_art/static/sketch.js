@@ -30,6 +30,9 @@ function mousePressed(){
 }
 
 function keyPressed(){
+  if (key === 's'){
+    save(canvas, 'my_sketch.jpg')
+  }
   if (key == ' '){
     let clip = get(0,0,square_size*10, square_size*20)
     clip.save('/Users/ramprakash/development/visual_stuff/screenshots/screenshot_1.png')
@@ -58,6 +61,7 @@ function resetscreen(){
 
 function renderscreen(){
   bg_color = palette[Math.floor(Math.random() * palette.length)]
+  // bg_color = 'red' 
   resetscreen()
 
 
