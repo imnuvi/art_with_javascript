@@ -15,8 +15,8 @@ cell.prototype = {
     // rect(this.xpos, this.ypos, this.width, this.height)
     fill(this.color)
     noStroke();
-    // opts = [ "render_triangle", "render_duality" , "render_squarrow", "rando_strip" ]
-    opts = [ "rando_strip" ]
+    opts = [ "render_triangle", "render_duality" , "render_squarrow", "rando_strip" ]
+    // opts = [ "rando_strip" ]
     orientation = Math.floor(Math.random() * 4)
     this[opts[Math.floor(Math.random() * opts.length)]](orientation)
     // this.render_circle()

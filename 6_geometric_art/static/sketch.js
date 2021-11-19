@@ -13,7 +13,7 @@ function reportsize(){
   init();
 }
 
-window.addEventListener('resize', reportsize);
+// window.addEventListener('resize', reportsize);
 
 
 
