@@ -13,7 +13,7 @@ function reportsize(){
   init();
 }
 
-window.addEventListener('resize', reportsize);
+// window.addEventListener('resize', reportsize);
 
 
 
@@ -30,6 +30,9 @@ function mousePressed(){
 }
 
 function keyPressed(){
+  if (key === 's'){
+    save(canvas, 'my_sketch.jpg')
+  }
   if (key == ' '){
     let clip = get(0,0,square_size*10, square_size*20)
     clip.save('/Users/ramprakash/development/visual_stuff/screenshots/screenshot_1.png')
@@ -47,12 +50,10 @@ function resetscreen(){
     for (let j=0; j<h_count;j++){
       let size_opts = [square_size, square_size*2]
       let size = size_opts[Math.floor(Math.random() * size_opts.length)]
-      console.log(size)
       //let square_dev_x = i*square_size + (Math.floor(Math.random()*3) - 1)*size/2
       //let square_dev_y = j*square_size + (Math.floor(Math.random()*3) - 1)*size/2
       let square_dev_y = j*square_size
       let square_dev_x = i*square_size
-      console.log(square_dev_x, square_dev_y)
       cells[i][j] = new cell(square_dev_x , square_dev_y,  size, size)
     }
   }
@@ -60,6 +61,7 @@ function resetscreen(){
 
 function renderscreen(){
   bg_color = palette[Math.floor(Math.random() * palette.length)]
+  // bg_color = 'red' 
   resetscreen()
 
 
