@@ -28,10 +28,14 @@ function points_generator(shape_obj){
       top_left_corner = shape_obj.top_left_corner;
       bottom_right_corner = shape_obj.bottom_right_corner;
       length = shape_obj.length;
+      top_right_corner = createVector(top_left_corner.x + length, top_left_corner.y);
+      bottom_left_corner = createVector(top_left_corner.x, top_left_corner.y + length);
       points_per_side = round(n/4);
+      // a single segment is side length / points per side
+      segment_length = length / points_per_side;
       // for each squere there are four sides and n/4 points
       for (let i=0;, i<4; i++){
-        for (let j=0;, j<4; j++){
+        for (let j=0;, j<points_per_side; j++){
           
         }
       }
