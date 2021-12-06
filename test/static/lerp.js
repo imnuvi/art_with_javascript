@@ -25,17 +25,21 @@ function points_generator(shape_obj){
     }
     else if (shape == 'square'){
       // for a square either a corner and length are required or top left and bottom right corners are required
-      top_left_corner = shape_obj.top_left_corner;
-      bottom_right_corner = shape_obj.bottom_right_corner;
-      length = shape_obj.length;
-      top_right_corner = createVector(top_left_corner.x + length, top_left_corner.y);
-      bottom_left_corner = createVector(top_left_corner.x, top_left_corner.y + length);
-      points_per_side = round(n/4);
+      let top_left_corner = shape_obj.top_left_corner;
+      let bottom_right_corner = shape_obj.bottom_right_corner;
+      let length = shape_obj.length;
+      let top_right_corner = createVector(top_left_corner.x + length, top_left_corner.y);
+      let bottom_left_corner = createVector(top_left_corner.x, top_left_corner.y + length);
+      let points_per_side = round(n/4);
       // a single segment is side length / points per side
-      segment_length = length / points_per_side;
+      let segment_length = length / points_per_side;
       // for each squere there are four sides and n/4 points
+      let line_splitter = function(point1, point2){
+        kl
+      }
       for (let i=0;, i<4; i++){
         for (let j=0;, j<points_per_side; j++){
+
           
         }
       }
