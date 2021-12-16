@@ -9,6 +9,12 @@ function random_color(){
 
 function init(){
   ww = windowWidth;
+
+
+
+
+
+
   wh = windowHeight;
   canvas = createCanvas(ww,wh);
   canvas.style('z-index','-1');
