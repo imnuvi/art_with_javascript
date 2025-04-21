@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>3D Matrix Stack</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // Configuration
+        const MATRIX_SIZE = 15;    // X-Y dimensions
+        const Z_SLICES = 15;       // Number of Z layers
+        const CELL_SIZE = 0.09;    // Size of each cell
+        const SPACING = 0.4;        // X-Y spacing between cells
+        const Z_SPACING = 0.4;    // Z spacing between slices
+        const CELL_DEPTH = 0.04;   // Thickness of individual cells
+
+        // Initialize Three.js components
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Set up controls and camera
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        camera.position.set(15, 15, 15);
+        controls.update();
+
+        // Lighting setup
+        scene.add(new THREE.AmbientLight(0xffffff, 0.3));
+        const light = new THREE.DirectionalLight(0xffffff, 0.8);
+        light.position.set(10, 10, 10);
+        scene.add(light);
+
+        // Generate 3D matrix data (X x Y x Z)
+        function generate3DMatrix(x, y, z) {
+            const matrix = [];
+            for (let zi = 0; zi < z; zi++) {
+                matrix[zi] = [];
+                for (let xi = 0; xi < x; xi++) {
+                    matrix[zi][xi] = [];
+                    for (let yi = 0; yi < y; yi++) {
+                        // Add some vertical variation for visual interest
+                        const verticalBias = (zi/Z_SLICES) * 0.5;
+                        matrix[zi][xi][yi] = Math.random() * (1 - verticalBias) + verticalBias;
+                    }
+                }
+            }
+            return matrix;
+        }
+
+        // Color mapping with Z-axis hue variation
+        function getStackColor(value, zIndex) {
+            const hueBase = 50; // Blue base
+            const zOffset = (zIndex/Z_SLICES) * 60; // Vary hue up to 60 degrees
+            const valueHue = (1 - value) * 60; // 60 degrees range for values
+            return new THREE.Color().setHSL(
+                (hueBase - zOffset - valueHue)/360, 
+                0.8, 
+                value * 0.5 + 0.5
+            );
+        }
+
+        // Create 3D grid of cells
+        const matrixData = generate3DMatrix(MATRIX_SIZE, MATRIX_SIZE, Z_SLICES);
+        const halfX = (MATRIX_SIZE * SPACING) / 2;
+        const halfY = (MATRIX_SIZE * SPACING) / 2;
+        const halfZ = (Z_SLICES * Z_SPACING) / 2;
+
+        for (let z = 0; z < Z_SLICES; z++) {
+            for (let x = 0; x < MATRIX_SIZE; x++) {
+                for (let y = 0; y < MATRIX_SIZE; y++) {
+                    const geometry = new THREE.BoxGeometry(CELL_SIZE, CELL_SIZE, CELL_DEPTH);
+                    const material = new THREE.MeshPhongMaterial({
+                        color: getStackColor(matrixData[z][x][y], z),
+                        shininess: 50
+                    });
+
+                    const cell = new THREE.Mesh(geometry, material);
+                    cell.position.set(
+                        x * SPACING - halfX + SPACING/2,
+                        y * SPACING - halfY + SPACING/2,
+                        z * Z_SPACING - halfZ + Z_SPACING/2
+                    );
+                    
+                    scene.add(cell);
+                }
+            }
+        }
+
+        // Animation and rendering
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+    </script>
+</body>
+</html>
