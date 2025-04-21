@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>2D Matrix 3D Visualization</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+    <script>
+        // Initialize scene, camera, and renderer
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.body.appendChild(renderer.domElement);
+
+        // Add OrbitControls
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        camera.position.set(10, 10, 10);
+        controls.update();
+
+        // Add lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(10, 10, 10);
+        scene.add(directionalLight);
+
+        // Generate sample matrix data (10x10)
+        const matrixSize = 10;
+        const matrix = [];
+        for (let i = 0; i < matrixSize; i++) {
+            matrix[i] = [];
+            for (let j = 0; j < matrixSize; j++) {
+                matrix[i][j] = Math.random(); // Values between 0 and 1
+            }
+        }
+
+        // Color mapping function (heatmap: blue -> green -> red)
+        function getHeatmapColor(value) {
+            const hue = (1 - value) * 240; // 240 (blue) to 0 (red)
+            return new THREE.Color(`hsl(${hue}, 100%, 50%)`);
+        }
+
+        // Create grid cells
+        const cellSize = 0.8; // Slightly smaller than spacing to create gaps
+        const spacing = 1;    // Distance between cell centers
+        const depth = 0.2;    // Constant depth for all cells
+
+        for (let i = 0; i < matrixSize; i++) {
+            for (let j = 0; j < matrixSize; j++) {
+                // Create cell geometry and material
+                const geometry = new THREE.BoxGeometry(cellSize, cellSize, depth);
+                const material = new THREE.MeshPhongMaterial({ 
+                    color: getHeatmapColor(matrix[i][j]),
+                    shininess: 100
+                });
+
+                // Create mesh and position it
+                const cell = new THREE.Mesh(geometry, material);
+                cell.position.set(
+                    i * spacing - (matrixSize * spacing) / 2 + spacing/2,
+                    j * spacing - (matrixSize * spacing) / 2 + spacing/2,
+                    0
+                );
+                
+                scene.add(cell);
+            }
+        }
+
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            controls.update();
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+    </script>
+</body>
+</html>
